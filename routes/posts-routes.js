@@ -16,7 +16,7 @@ router.use(checkAuth);
 
 router.post(
   "/",
-  // fileUpload.single("cardImage"),
+  fileUpload.single("cardImage"),
   [
     check("title").not().isEmpty(),
     check("caption").not().isEmpty(),

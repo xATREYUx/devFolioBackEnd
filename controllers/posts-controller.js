@@ -74,9 +74,9 @@ const createPost = async (req, res, next) => {
     title,
     caption,
     content,
-    cardImage,
+    // cardImage,
 
-    // cardImage: req.file.path,
+    cardImage: req.file.path,
     creator: req.userData.userId,
     time: Date.now,
   });

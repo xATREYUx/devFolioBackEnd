@@ -12,15 +12,14 @@ const app = express();
 const fs = require("fs");
 const path = require("path");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // const corsOptions = {
 //   origin: "http://localhost:3000",
 // };
 // app.use(cors(corsOptions));
-// app.use("/uploads/images", express.static(path.join("uploads", "images")));
+app.use("/uploads/images", express.static(path.join("uploads", "images")));
 
 app.use((req, res, next) => {
-  console.log("app.use req", req.body);
   // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Origin", "*");
 
