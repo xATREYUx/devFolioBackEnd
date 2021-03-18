@@ -16,7 +16,11 @@ router.use(checkAuth);
 
 router.post(
   "/",
-  fileUpload.single("cardImage"),
+  fileUpload.fields([
+    { name: "cardImage", maxCount: 1 },
+    { name: "postImageOne", maxCount: 1 },
+    { name: "postImageTwo", maxCount: 1 },
+  ]),
   [
     check("title").not().isEmpty(),
     check("caption").not().isEmpty(),

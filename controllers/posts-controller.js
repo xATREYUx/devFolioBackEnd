@@ -61,6 +61,7 @@ const getHomePagePosts = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
   console.log("createPost req.body", req.body);
+  console.log("createPost req.files.cardImage.path", req.files.cardImage.path);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -68,15 +69,15 @@ const createPost = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { title, caption, content, cardImage } = req.body;
 
+  const { title, caption, content } = req.body;
   const createdPost = new Post({
     title,
     caption,
     content,
-    // cardImage,
-
-    cardImage: req.file.path,
+    cardImage: req.files.cardImage[0].path,
+    postImageOne: req.files.postImageOne[0].path,
+    postImageTwo: req.files.postImageTwo[0].path,
     creator: req.userData.userId,
     time: Date.now,
   });

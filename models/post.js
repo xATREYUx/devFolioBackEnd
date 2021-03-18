@@ -7,8 +7,8 @@ const postSchema = new Schema({
   caption: { type: String, required: true },
   content: { type: String, required: true },
   cardImage: { type: String },
-  postImages: { type: Array },
-  // cardImage: { data: Buffer, contentType: String },
+  postImageOne: { type: String },
+  postImageTwo: { type: String },
   creator: { type: mongoose.Types.ObjectId, required: false, ref: "User" },
   timestamp: { type: Date, default: Date.now },
 });
